@@ -33,15 +33,15 @@ class ESISecurity:
         self,
         client_id: str,
         permissions: List[str],
-        auth_url: str = 'https://login.eveonline.com/v2/oauth/authorize/',
-        token_url: str = 'https://login.eveonline.com/v2/oauth/token',
-        auth_callback_html: Union[str, Path] = 'You can now close this window',
+        auth_url: str = None,
+        token_url: str = None,
+        auth_callback_html: Union[str, Path] = None,
     ) -> None:
         self.client_id = client_id
         self.permissions = permissions
-        self.auth_url = auth_url
-        self.token_url = token_url
-        self.auth_callback_html = auth_callback_html
+        self.auth_url = auth_url or 'https://login.eveonline.com/v2/oauth/authorize/'
+        self.token_url = token_url or 'https://login.eveonline.com/v2/oauth/token'
+        self.auth_callback_html = auth_callback_html or 'You can now close this window'
 
         self.access_token = None
         self.refresh_token = None
@@ -135,3 +135,17 @@ class ESISecurity:
         })
 
         self._register_access_token(response)
+
+    def check_and_refresh(self) -> None:
+        if self.access_token_expiry_date <= datetime.now():
+            self.refresh()
+
+    @property
+    def access_token(self):
+        self.check_and_refresh()
+
+        return self._access_token
+
+    @access_token.setter
+    def access_token(self, new_value: str):
+        self._access_token = new_value
