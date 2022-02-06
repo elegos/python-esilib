@@ -24,9 +24,9 @@ class ESIResponseMeta:
 
 
 @dataclass
-class ESIResponse:
+class ESIResponse(Generic[T]):
     meta: ESIResponseMeta
-    data: Any
+    data: T
 
 
 class ESIListResult(ESIResponse, Generic[T]):

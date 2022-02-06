@@ -1,2 +1,3 @@
 /src/esilib/tests/playground.py
+/src/esilib/domain/gen_*.py
 __pycache__

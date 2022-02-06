@@ -1,4 +1,5 @@
 import json
+from pathlib import Path
 import re
 from typing import List
 
@@ -10,9 +11,22 @@ params_map = {
 }
 
 param_type = {
+    'boolean': 'bool',
+    'integer': 'int',
     'string': 'str',
-    'integer': 'int'
 }
+
+
+def get_type(param_spec: dict):
+    if param_spec["type"] == 'array':
+        sub_type = param_spec['items']['type']
+        if sub_type == 'array':
+            return f'List[{get_type(param_spec["items"])}]'
+        array_type = param_type[param_spec['items']['type']]
+
+        return f'List[{array_type}]'
+    else:
+        return param_type[param_spec["type"]]
 
 
 def generate_domain(domain: str, base_path: str, swagger_url: str = 'https://esi.evetech.net/latest/swagger.json'):
@@ -69,11 +83,21 @@ class {class_name}(BaseDomain):
 
             desc_params: List[str] = []
             for param in op_spec['parameters']:
-                ref = param['$ref']
-                param_name = ref[ref.rindex('/') + 1:]
-                param_spec = spec_params[param_name]
+                if '$ref' in param:
+                    ref = param['$ref']
+                    param_name = ref[ref.rindex('/') + 1:]
+                    param_spec = spec_params[param_name]
+                else:
+                    ref = param['name']
+                    param_name = ref
+                    param_spec = param
                 remapped_name = params_map[ref] if ref in params_map else param_name
-                remapped_type = param_type[param_spec["type"]]
+                remapped_type = get_type(param_spec)
+                # if param_spec["type"] == 'array':
+                #     array_type = param_type[param_spec['items']['type']]
+                #     remapped_type = f'List[{array_type}]'
+                # else:
+                #     remapped_type = param_type[param_spec["type"]]
 
                 desc_params.append(
                     f':param {remapped_name}'
@@ -83,10 +107,12 @@ class {class_name}(BaseDomain):
 
                 if param_spec['in'] == 'path':
                     path_params[param_name] = remapped_name
-                if param_spec['in'] == 'query':
+                elif param_spec['in'] == 'query':
                     query_params[param_name] = remapped_name
-                if param_spec['in'] == 'header':
+                elif param_spec['in'] == 'header':
                     header_params[param_name] = remapped_name
+                else:
+                    raise Exception(f'Unhandled parameter location: {param_spec["in"]}')
 
                 if param_spec['in'] == 'path':
                     func_params.append(f'{remapped_name}: {remapped_type}')
@@ -133,8 +159,28 @@ class {class_name}(BaseDomain):
 
         raise UnknownAPIStatus(response)'''
 
-    print(file)
+    out_path = Path(__file__).parent.joinpath('esilib', 'domain', f'gen_{class_name.lower()}.py')
+    out_path.write_text(file)
 
 
 if __name__ == '__main__':
     generate_domain('Alliances', '/alliances/')
+    generate_domain('Characters', '/characters/')
+    generate_domain('Contracts', '/contracts/')
+    generate_domain('Corporations', '/corporations/')
+    generate_domain('Dogma', '/dogma/')
+    generate_domain('FactionWarfare', '/fw/')
+    generate_domain('Fleets', '/fleets/')
+    generate_domain('Incursions', '/incursions/')
+    generate_domain('Industry', '/industry/')
+    generate_domain('Insurance', '/insurance/')
+    generate_domain('Killmails', '/killmails/')
+    generate_domain('Loyalty', '/loyalty/')
+    generate_domain('Opportunities', '/opportunities/')
+    generate_domain('Route', '/route/')
+    generate_domain('Search', '/search/')
+    generate_domain('Sovereignty', '/sovereignty/')
+    generate_domain('Status', '/status/')
+    generate_domain('Universe', '/universe/')
+    generate_domain('UserInterface', '/ui/')
+    generate_domain('Wars', '/wars/')
