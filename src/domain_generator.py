@@ -1,7 +1,8 @@
-from dataclasses import dataclass
 import json
-from pathlib import Path
 import re
+import subprocess
+from dataclasses import dataclass
+from pathlib import Path
 from typing import Any, Dict, List
 
 import requests
@@ -15,6 +16,8 @@ params_map = {
 param_type = {
     'boolean': 'bool',
     'integer': 'int',
+    'number': 'float',
+    'object': 'dict',
     'string': 'str',
 }
 
@@ -25,6 +28,16 @@ class OpMeta:
     name: str
     type: str
     path: str
+
+
+@dataclass
+class DomainClassMeta:
+    module: str
+    class_name: str
+
+    @property
+    def attr_name(self) -> str:
+        return re.sub(r'(?!^)([A-Z]+)', r'_\1', self.class_name).lower()
 
 
 @dataclass
@@ -120,40 +133,7 @@ def params_to_args(params: List[OpParam]) -> str:
 
         result.append(param_str)
 
-    return ', '.join(result)
-
-
-def get_function_generator(
-    function_name: str,
-    description: str,
-    func_params: str,
-    header_params: str,
-    query_params: str,
-    path_params: str,
-    path: str,
-) -> str:
-    return f'''
-
-    def {function_name}({func_params}) -> ESIResponse: # return type WIP
-        \'\'\'
-        {description}
-        \'\'\'
-
-        headers = {{{header_params}}}
-        query_params = {{{query_params}}}
-        path_params = {{{path_params}}}
-
-        url = f'{{self.BASE_URI}}{path}'
-        if path_params:
-            url = url.format(**path_params)
-
-        response = self._get(url, query_params=query_params, headers=headers)
-
-        if response.status_code == 200:
-            # return type WIP
-            return ESIResponse(meta=ESIResponseMeta(response), data=json.loads(response.content))
-
-        raise UnknownAPIStatus(response)'''
+    return ',\n'.join(result)
 
 
 def generate_get_function(
@@ -163,6 +143,8 @@ def generate_get_function(
     header_parameters: List[OpParam],
     path_parameters: List[OpParam],
     query_parameters: List[OpParam],
+    response_type: str,
+    response_desc: str
 ):
     header_params = ', '.join([param_to_dict_elem(param) for param in header_parameters])
     query_params = ', '.join([param_to_dict_elem(param) for param in query_parameters])
@@ -175,17 +157,25 @@ def generate_get_function(
     description_params.extend(query_parameters)
     description_params.extend(path_parameters)
     description_params = [
-        f':param {param.get_name()} {param.get_type()}: DESCRIPTION' for param in description_params]
+        f':param {param.get_name()} {param.get_type()}: DESCRIPTION'
+        for param in description_params]
+
+    if response_desc:
+        description_params.append(f':returns: {response_desc}')
 
     description += '\n\n' + '\n'.join(description_params)
     description = description.replace('\n', '\n        ')
+    description = '\n'.join(
+        [re.sub(r'^ +$', '', desc) for desc in description.split('\n')]
+    )
 
     return f'''
-
-    def {function_name}({func_params}) -> ESIResponse: # return type WIP
+    def {function_name}(
+        {func_params}
+    ) -> ESIResponse[{response_type}]:
         \'\'\'
         {description}
-        \'\'\'
+        \'\'\' #nopep8
 
         header_params = {{{header_params}}}
         query_params = {{{query_params}}}
@@ -204,11 +194,15 @@ def generate_get_function(
         raise UnknownAPIStatus(response)'''
 
 
-def generate_domain(domain: str, ops: List[OpMeta], spec_parser: SwaggerParser, raw_spec: dict):
+def generate_domain(
+    domain: str, ops: List[OpMeta], spec_parser: SwaggerParser, raw_spec: dict
+) -> DomainClassMeta:
     file_path = Path(__file__).parent.joinpath(
         'esilib', 'domain', f'gen_{domain.lower().replace(" ", "_")}.py')
 
     class_name = ''.join([part[0].capitalize() + part[1:].lower() for part in domain.split(' ')])
+
+    api_version = spec_parser.specification['info']['version']
 
     file_content = f'''import json
 from typing import List
@@ -222,7 +216,11 @@ THIS FILE HAS BEEN GENERATED AUTOMATICALLY.
 PLEASE DO NOT MODIFY IT DIRECTLY.
 \'\'\'
 
+
 class {class_name}(BaseDomain):
+    \'\'\'
+    ESI API version {api_version}
+    \'\'\'
     BASE_PATH = '{spec_parser.base_path}'
 '''
 
@@ -233,20 +231,36 @@ class {class_name}(BaseDomain):
         description: str = raw_spec['paths'][op.path][op.type]['description']
         path = op.path
 
-        path_parameters = [OpParam(param_name, param_spec) for param_name,
-                           param_spec in op_spec['parameters'].items() if param_spec['in'] == 'path']
-        query_parameters = [OpParam(param_name, param_spec) for param_name,
-                            param_spec in op_spec['parameters'].items() if param_spec['in'] == 'query']
-        header_parameters = [OpParam(param_name, param_spec) for param_name,
-                             param_spec in op_spec['parameters'].items() if param_spec['in'] == 'header']
-        # cookie_parameters = [OpRawParam(param_name, param_spec) for param_name,
-        #                      param_spec in op_spec['parameters'].items() if param_spec['in'] == 'cookie']
-        body_parameters = [OpParam(param_name, param_spec) for param_name,
-                           param_spec in op_spec['parameters'].items() if param_spec['in'] == 'body']
+        path_parameters = [
+            OpParam(param_name, param_spec) for param_name,
+            param_spec in op_spec['parameters'].items() if param_spec['in'] == 'path']
+        query_parameters = [
+            OpParam(param_name, param_spec) for param_name,
+            param_spec in op_spec['parameters'].items() if param_spec['in'] == 'query']
+        header_parameters = [
+            OpParam(param_name, param_spec) for param_name,
+            param_spec in op_spec['parameters'].items() if param_spec['in'] == 'header']
+        # cookie_parameters =
+        #   OpRawParam(param_name, param_spec) for param_name,
+        #   param_spec in op_spec['parameters'].items() if param_spec['in'] == 'cookie']
+        body_parameters = [
+            OpParam(param_name, param_spec) for param_name,
+            param_spec in op_spec['parameters'].items() if param_spec['in'] == 'body']
+
+        response = op_spec['responses']['200'] if '200' in op_spec['responses'] else None
+        if response:
+            spec = response['schema']
+            response_type = get_type(spec)
+            response_desc = spec['description'] if 'description' in spec else None
+        else:
+            response_type = 'None'
+            response_desc = None
 
         if op.type == 'get':
             functions.append(generate_get_function(
-                path, op.name, description, header_parameters, path_parameters, query_parameters))
+                path, op.name, description, header_parameters, path_parameters,
+                query_parameters, response_type, response_desc
+            ))
         if op.type == 'post':
             pass
         if op.type == 'put':
@@ -255,10 +269,31 @@ class {class_name}(BaseDomain):
             pass
         pass
 
-    file_path = Path(__file__).parent.joinpath(
-        'esilib', 'domain', f'gen_{domain.lower().replace(" ", "_")}.py')
+    module_name = f'gen_{domain.lower().replace(" ", "_")}'
 
-    file_path.write_text(file_content + '\n'.join(functions))
+    file_path = Path(__file__).parent.joinpath('esilib', 'domain', f'{module_name}.py')
+    file_path.write_text(file_content + '\n'.join(functions) + '\n')
+
+    return DomainClassMeta(module=module_name, class_name=class_name)
+
+
+def write_client_class(domains: List[DomainClassMeta]):
+    template = Path(__file__).parent.joinpath('esilib', 'templates', 'client.py').read_text()
+    imports: List[str] = []
+    props: List[str] = []
+    for domain in domains:
+        imports.append(f'from esilib.domain.{domain.module} import {domain.class_name}')
+        props.append(f'''
+    @property
+    def {domain.attr_name}(self) -> {domain.class_name}:
+        return self._get_domain('{domain.attr_name}', {domain.class_name})''')
+
+    file_content = template.replace('~~IMPORTS~~', '\n'.join(imports))
+    file_content += '\n'.join(props)
+    if file_content[-1] != '\n':
+        file_content += '\n'
+
+    Path(__file__).parent.joinpath('esilib', 'client.py').write_text(file_content)
 
 
 def generate_domains(swagger_url: str = 'https://esi.evetech.net/latest/swagger.json'):
@@ -266,8 +301,9 @@ def generate_domains(swagger_url: str = 'https://esi.evetech.net/latest/swagger.
     spec_data = json.loads(spec_response.content)
 
     spec_parser = SwaggerParser(swagger_dict=spec_data)
-    operations = [OpMeta(domain=spec[2], name=name, type=spec[1], path=spec[0][len(spec_parser.base_path):])
-                  for name, spec in spec_parser.operation.items()]
+    operations = [
+        OpMeta(domain=spec[2], name=name, type=spec[1], path=spec[0][len(spec_parser.base_path):])
+        for name, spec in spec_parser.operation.items()]
 
     domains: Dict[str, List[OpMeta]] = {}
     for op in operations:
@@ -276,120 +312,13 @@ def generate_domains(swagger_url: str = 'https://esi.evetech.net/latest/swagger.
 
         domains[op.domain].append(op)
 
+    domains_meta: List[DomainClassMeta] = []
     for domain, ops in domains.items():
-        generate_domain(domain, ops, spec_parser, spec_data)
+        domains_meta.append(generate_domain(domain, ops, spec_parser, spec_data))
 
-    return
-
-    spec_params = spec_data['parameters']
-    paths = {key: value for key, value in spec['paths'].items() if key.startswith(base_path)}
-
-    if len(paths) == 0:
-        raise Exception(
-            'Base path should represent at least one path in the swagger paths definition')
-
-    class_name = domain.lower().split(' ')
-    class_name = ''.join([string[0].upper() + string[1:].lower() for string in class_name])
-    base_uri = base_path
-
-    if base_uri.endswith('/'):
-        base_uri = base_uri[0:-1]
-
-    file = f'''import json
-from typing import List
-from esilib.domain.base_domain import BaseDomain
-from esilib.exceptions import UnknownAPIStatus
-from esilib.models import ESIResponse, ESIResponseMeta
-
-
-\'\'\'
-THIS FILE HAS BEEN GENERATED AUTOMATICALLY.
-PLEASE DO NOT MODIFY IT DIRECTLY.
-\'\'\'
-
-class {class_name}(BaseDomain):
-    BASE_URI = '{base_uri}'
-'''
-
-    for path, path_spec in paths.items():
-        for method, op_spec in path_spec.items():
-            # TODO support other verbs
-            if method != 'get':
-                continue
-
-            description: str = op_spec['description']
-            function_name: str = op_spec['operationId']
-
-            description = description.replace('\n', '\n        ')
-            func_params: List[str] = ['self']
-            func_params_opt: List[str] = []
-
-            header_params = {}
-            query_params = {}
-            path_params = {}
-
-            desc_params: List[str] = []
-            for param in op_spec['parameters']:
-                if '$ref' in param:
-                    ref = param['$ref']
-                    param_name = ref[ref.rindex('/') + 1:]
-                    param_spec = spec_params[param_name]
-                else:
-                    ref = param['name']
-                    param_name = ref
-                    param_spec = param
-                remapped_name = params_map[ref] if ref in params_map else param_name
-                remapped_type = get_type(param_spec)
-
-                desc_params.append(
-                    f':param {remapped_name}'
-                    + f' {remapped_type}:'
-                    + f' {param_spec["description"]}'
-                )
-
-                if param_spec['in'] == 'path':
-                    path_params[param_name] = remapped_name
-                elif param_spec['in'] == 'query':
-                    query_params[param_name] = remapped_name
-                elif param_spec['in'] == 'header':
-                    header_params[param_name] = remapped_name
-                else:
-                    raise Exception(f'Unhandled parameter location: {param_spec["in"]}')
-
-                if param_spec['in'] == 'path':
-                    func_params.append(f'{remapped_name}: {remapped_type}')
-                else:
-                    default_value = param_spec['default'] if 'default' in param_spec else 'None'
-                    if remapped_type == 'str' and default_value != 'None':
-                        default_value = f"'{default_value}'"
-                    func_params_opt.append(f'{remapped_name}: {remapped_type} = {default_value}')
-
-            description += '\n\n        ' + '\n        '.join(desc_params)
-
-            func_params.extend(func_params_opt)
-            func_params = ', '.join(func_params)
-
-            header_params = ', '.join([f"'{param}': {remapped_param}" for param,
-                                       remapped_param in header_params.items()])
-            query_params = ', '.join([f"'{param}': {remapped_param}" for param,
-                                      remapped_param in query_params.items()])
-            path_params = ', '.join([f"'{param}': {remapped_param}" for param,
-                                     remapped_param in path_params.items()])
-
-            path = path[len(base_uri):]
-
-            file += get_function_generator(
-                function_name=function_name,
-                description=description,
-                func_params=func_params,
-                header_params=header_params,
-                query_params=query_params,
-                path_params=path_params,
-                path=path
-            )
-
-    out_path = Path(__file__).parent.joinpath('esilib', 'domain', f'gen_{class_name.lower()}.py')
-    out_path.write_text(file)
+    write_client_class(domains_meta)
+    subprocess.run('autopep8 --in-place esilib/domain/gen_*.py',
+                   shell=True, cwd=Path(__file__).parent)
 
 
 if __name__ == '__main__':

@@ -1,8 +1,10 @@
 from typing import Any, Dict
-from esilib.exceptions import BadRequest, ErrorLimited, GatewayTimeout, InternalServerError, NotModified, ServiceUnavailable
-from esilib.security import ESISecurity
 
 import requests
+from esilib.exceptions import (BadRequest, ErrorLimited, GatewayTimeout,
+                               InternalServerError, NotModified,
+                               ServiceUnavailable)
+from esilib.security import ESISecurity
 
 
 class BaseDomain:

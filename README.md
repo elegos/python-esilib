@@ -52,7 +52,7 @@ See the `esilib.client.ESIClient` constructor for a full list of options.
 
 ### Accessing the various domains:
 
-The client provides direct access to all the ESI domains (see the list of implemented domains at the end of this chapter).
+The client provides access to all the [ESI API domains](https://esi.evetech.net/ui/).
 
 In order to access a particular domain's calls, just get the relative client's attribute, for example:
 
@@ -60,61 +60,21 @@ In order to access a particular domain's calls, just get the relative client's a
 alliance_api = client.alliance
 ```
 
+The attribute naming convention is the following: lower case, spaces replaced by underscores.
+
+A few examples:
+
+- Alliance -> `alliance`
+- Faction Warfare -> `faction_warfare`
+- Planetary Interaction -> `planetary_interaction`
+
 ## Implemented calls
 
-List of all the available ESI API calls.
+Client's domains and relative functions are being generated automatically from the [Swagger interface](https://esi.evetech.net/latest/swagger.json).
 
-The client's attribute is in the parenthesis.
+A list of HTTP verbs follow:
 
-The check marked ones are the implemented ones, the pointed ones are the tested ones against at the API version shown after the pointing hand.
-
-- Alliances (`alliances`)
-    - ☑ [get_alliances](https://esi.evetech.net/ui/#/Alliance/get_alliances) 👉 1.10.1
-    - ☐ [get_alliances_alliance_id](https://esi.evetech.net/ui/#/Alliance/get_alliances_alliance_id)
-    - ☐ [get_alliances_alliance_id_corporations](https://esi.evetech.net/ui/#/Alliance/get_alliances_alliance_id_corporations)
-    - ☐ [get_alliances_alliance_id_icons](https://esi.evetech.net/ui/#/Alliance/get_alliances_alliance_id_icons)
-- Assets
-    - ☐ [get_characters_character_id_assets](https://esi.evetech.net/ui/#/Assets/get_characters_character_id_assets)
-    - ☐ [post_characters_character_id_assets_locations](https://esi.evetech.net/ui/#/Assets/post_characters_character_id_assets_locations)
-    - ☐ [post_characters_character_id_assets_names](https://esi.evetech.net/ui/#/Assets/post_characters_character_id_assets_names)
-    - ☐ [get_corporations_corporation_id_assets](https://esi.evetech.net/ui/#/Assets/get_corporations_corporation_id_assets)
-    - ☐ [post_corporations_corporation_id_assets_locations](https://esi.evetech.net/ui/#/Assets/post_corporations_corporation_id_assets_locations)
-    - ☐ [post_corporations_corporation_id_assets_names](https://esi.evetech.net/ui/#/Assets/post_corporations_corporation_id_assets_names)
-- Bookmarks
-    - ☐ [get_characters_character_id_bookmarks](https://esi.evetech.net/ui/#/Bookmarks/get_characters_character_id_bookmarks)
-    - ☐ [get_characters_character_id_bookmarks_folders](https://esi.evetech.net/ui/#/Bookmarks/get_characters_character_id_bookmarks_folders)
-    - ☐ [get_corporations_corporation_id_bookmarks](https://esi.evetech.net/ui/#/Bookmarks/get_corporations_corporation_id_bookmarks)
-    - ☐ [get_corporations_corporation_id_bookmarks_folders](https://esi.evetech.net/ui/#/Bookmarks/get_corporations_corporation_id_bookmarks_folders)
-- Calendar
-    - ☐ [get_characters_character_id_calendar](https://esi.evetech.net/ui/#/Calendar/get_characters_character_id_calendar)
-    - ☐ [get_characters_character_id_calendar_event_id](https://esi.evetech.net/ui/#/Calendar/get_characters_character_id_calendar_event_id)
-    - ☐ [put_characters_character_id_calendar_event_id](https://esi.evetech.net/ui/#/Calendar/put_characters_character_id_calendar_event_id)
-    - ☐ [get_characters_character_id_calendar_event_id_attendees](https://esi.evetech.net/ui/#/Calendar/get_characters_character_id_calendar_event_id_attendees)
-- Character
-- Clones
-- Contacts
-- Contracts
-- Corporation
-- Dogma
-- Faction Warfare
-- Fittings
-- Fleets
-- Incursions
-- Industry
-- Insurance
-- Killmails
-- Location
-- Loyalty
-- Mail
-- Market
-- Opportunities
-- Planetary Interaction
-- Routes
-- Search
-- Skills
-- Sovereignty
-- Status
-- Universe
-- User Interface
-- Wallet
-- Wars
+- **GET**: implemented
+- **POST**: not implemented yet
+- **PUT**: not implemented yet
+- **DELETE**: not implemented yet
