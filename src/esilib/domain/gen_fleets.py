@@ -52,7 +52,7 @@ class Fleets(BaseDomain):
         query_params = {'datasource': datasource, 'token': token}
         path_params = {'character_id': character_id}
 
-        url = f'{self.BASE_URI}/characters/{character_id}/fleet/'
+        url = f'/characters/{character_id}/fleet/'
         if path_params:
             url = url.format(**path_params)
 
@@ -95,7 +95,7 @@ class Fleets(BaseDomain):
         query_params = {'datasource': datasource, 'token': token}
         path_params = {'fleet_id': fleet_id}
 
-        url = f'{self.BASE_URI}/fleets/{fleet_id}/'
+        url = f'/fleets/{fleet_id}/'
         if path_params:
             url = url.format(**path_params)
 
@@ -142,7 +142,7 @@ class Fleets(BaseDomain):
         query_params = {'datasource': datasource, 'language': language, 'token': token}
         path_params = {'fleet_id': fleet_id}
 
-        url = f'{self.BASE_URI}/fleets/{fleet_id}/members/'
+        url = f'/fleets/{fleet_id}/members/'
         if path_params:
             url = url.format(**path_params)
 
@@ -189,7 +189,7 @@ class Fleets(BaseDomain):
         query_params = {'datasource': datasource, 'language': language, 'token': token}
         path_params = {'fleet_id': fleet_id}
 
-        url = f'{self.BASE_URI}/fleets/{fleet_id}/wings/'
+        url = f'/fleets/{fleet_id}/wings/'
         if path_params:
             url = url.format(**path_params)
 

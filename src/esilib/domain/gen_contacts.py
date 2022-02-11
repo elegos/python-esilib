@@ -48,7 +48,7 @@ class Contacts(BaseDomain):
         query_params = {'datasource': datasource, 'page': page, 'token': token}
         path_params = {'alliance_id': alliance_id}
 
-        url = f'{self.BASE_URI}/alliances/{alliance_id}/contacts/'
+        url = f'/alliances/{alliance_id}/contacts/'
         if path_params:
             url = url.format(**path_params)
 
@@ -91,7 +91,7 @@ class Contacts(BaseDomain):
         query_params = {'datasource': datasource, 'token': token}
         path_params = {'alliance_id': alliance_id}
 
-        url = f'{self.BASE_URI}/alliances/{alliance_id}/contacts/labels/'
+        url = f'/alliances/{alliance_id}/contacts/labels/'
         if path_params:
             url = url.format(**path_params)
 
@@ -134,7 +134,7 @@ class Contacts(BaseDomain):
         query_params = {'datasource': datasource, 'page': page, 'token': token}
         path_params = {'character_id': character_id}
 
-        url = f'{self.BASE_URI}/characters/{character_id}/contacts/'
+        url = f'/characters/{character_id}/contacts/'
         if path_params:
             url = url.format(**path_params)
 
@@ -177,7 +177,7 @@ class Contacts(BaseDomain):
         query_params = {'datasource': datasource, 'token': token}
         path_params = {'character_id': character_id}
 
-        url = f'{self.BASE_URI}/characters/{character_id}/contacts/labels/'
+        url = f'/characters/{character_id}/contacts/labels/'
         if path_params:
             url = url.format(**path_params)
 
@@ -220,7 +220,7 @@ class Contacts(BaseDomain):
         query_params = {'datasource': datasource, 'page': page, 'token': token}
         path_params = {'corporation_id': corporation_id}
 
-        url = f'{self.BASE_URI}/corporations/{corporation_id}/contacts/'
+        url = f'/corporations/{corporation_id}/contacts/'
         if path_params:
             url = url.format(**path_params)
 
@@ -263,7 +263,7 @@ class Contacts(BaseDomain):
         query_params = {'datasource': datasource, 'token': token}
         path_params = {'corporation_id': corporation_id}
 
-        url = f'{self.BASE_URI}/corporations/{corporation_id}/contacts/labels/'
+        url = f'/corporations/{corporation_id}/contacts/labels/'
         if path_params:
             url = url.format(**path_params)
 

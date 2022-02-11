@@ -50,7 +50,7 @@ class FactionWarfare(BaseDomain):
         query_params = {'datasource': datasource, 'token': token}
         path_params = {'character_id': character_id}
 
-        url = f'{self.BASE_URI}/characters/{character_id}/fw/stats/'
+        url = f'/characters/{character_id}/fw/stats/'
         if path_params:
             url = url.format(**path_params)
 
@@ -95,7 +95,7 @@ class FactionWarfare(BaseDomain):
         query_params = {'datasource': datasource, 'token': token}
         path_params = {'corporation_id': corporation_id}
 
-        url = f'{self.BASE_URI}/corporations/{corporation_id}/fw/stats/'
+        url = f'/corporations/{corporation_id}/fw/stats/'
         if path_params:
             url = url.format(**path_params)
 
@@ -136,7 +136,7 @@ class FactionWarfare(BaseDomain):
         query_params = {'datasource': datasource}
         path_params = {}
 
-        url = f'{self.BASE_URI}/fw/leaderboards/'
+        url = f'/fw/leaderboards/'
         if path_params:
             url = url.format(**path_params)
 
@@ -177,7 +177,7 @@ class FactionWarfare(BaseDomain):
         query_params = {'datasource': datasource}
         path_params = {}
 
-        url = f'{self.BASE_URI}/fw/leaderboards/characters/'
+        url = f'/fw/leaderboards/characters/'
         if path_params:
             url = url.format(**path_params)
 
@@ -218,7 +218,7 @@ class FactionWarfare(BaseDomain):
         query_params = {'datasource': datasource}
         path_params = {}
 
-        url = f'{self.BASE_URI}/fw/leaderboards/corporations/'
+        url = f'/fw/leaderboards/corporations/'
         if path_params:
             url = url.format(**path_params)
 
@@ -259,7 +259,7 @@ class FactionWarfare(BaseDomain):
         query_params = {'datasource': datasource}
         path_params = {}
 
-        url = f'{self.BASE_URI}/fw/stats/'
+        url = f'/fw/stats/'
         if path_params:
             url = url.format(**path_params)
 
@@ -300,7 +300,7 @@ class FactionWarfare(BaseDomain):
         query_params = {'datasource': datasource}
         path_params = {}
 
-        url = f'{self.BASE_URI}/fw/systems/'
+        url = f'/fw/systems/'
         if path_params:
             url = url.format(**path_params)
 
@@ -341,7 +341,7 @@ class FactionWarfare(BaseDomain):
         query_params = {'datasource': datasource}
         path_params = {}
 
-        url = f'{self.BASE_URI}/fw/wars/'
+        url = f'/fw/wars/'
         if path_params:
             url = url.format(**path_params)
 

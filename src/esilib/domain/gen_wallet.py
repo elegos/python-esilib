@@ -49,7 +49,7 @@ class Wallet(BaseDomain):
         query_params = {'datasource': datasource, 'token': token}
         path_params = {'character_id': character_id}
 
-        url = f'{self.BASE_URI}/characters/{character_id}/wallet/'
+        url = f'/characters/{character_id}/wallet/'
         if path_params:
             url = url.format(**path_params)
 
@@ -92,7 +92,7 @@ class Wallet(BaseDomain):
         query_params = {'datasource': datasource, 'page': page, 'token': token}
         path_params = {'character_id': character_id}
 
-        url = f'{self.BASE_URI}/characters/{character_id}/wallet/journal/'
+        url = f'/characters/{character_id}/wallet/journal/'
         if path_params:
             url = url.format(**path_params)
 
@@ -137,7 +137,7 @@ class Wallet(BaseDomain):
         query_params = {'datasource': datasource, 'from_id': from_id, 'token': token}
         path_params = {'character_id': character_id}
 
-        url = f'{self.BASE_URI}/characters/{character_id}/wallet/transactions/'
+        url = f'/characters/{character_id}/wallet/transactions/'
         if path_params:
             url = url.format(**path_params)
 
@@ -184,7 +184,7 @@ class Wallet(BaseDomain):
         query_params = {'datasource': datasource, 'token': token}
         path_params = {'corporation_id': corporation_id}
 
-        url = f'{self.BASE_URI}/corporations/{corporation_id}/wallets/'
+        url = f'/corporations/{corporation_id}/wallets/'
         if path_params:
             url = url.format(**path_params)
 
@@ -233,7 +233,7 @@ class Wallet(BaseDomain):
         query_params = {'datasource': datasource, 'page': page, 'token': token}
         path_params = {'corporation_id': corporation_id, 'division': division}
 
-        url = f'{self.BASE_URI}/corporations/{corporation_id}/wallets/{division}/journal/'
+        url = f'/corporations/{corporation_id}/wallets/{division}/journal/'
         if path_params:
             url = url.format(**path_params)
 
@@ -284,7 +284,7 @@ class Wallet(BaseDomain):
         query_params = {'datasource': datasource, 'from_id': from_id, 'token': token}
         path_params = {'corporation_id': corporation_id, 'division': division}
 
-        url = f'{self.BASE_URI}/corporations/{corporation_id}/wallets/{division}/transactions/'
+        url = f'/corporations/{corporation_id}/wallets/{division}/transactions/'
         if path_params:
             url = url.format(**path_params)
 

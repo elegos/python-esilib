@@ -46,7 +46,7 @@ class Universe(BaseDomain):
         query_params = {'datasource': datasource, 'language': language}
         path_params = {}
 
-        url = f'{self.BASE_URI}/universe/ancestries/'
+        url = f'/universe/ancestries/'
         if path_params:
             url = url.format(**path_params)
 
@@ -85,7 +85,7 @@ class Universe(BaseDomain):
         query_params = {'datasource': datasource}
         path_params = {'asteroid_belt_id': asteroid_belt_id}
 
-        url = f'{self.BASE_URI}/universe/asteroid_belts/{asteroid_belt_id}/'
+        url = f'/universe/asteroid_belts/{asteroid_belt_id}/'
         if path_params:
             url = url.format(**path_params)
 
@@ -126,7 +126,7 @@ class Universe(BaseDomain):
         query_params = {'datasource': datasource, 'language': language}
         path_params = {}
 
-        url = f'{self.BASE_URI}/universe/bloodlines/'
+        url = f'/universe/bloodlines/'
         if path_params:
             url = url.format(**path_params)
 
@@ -163,7 +163,7 @@ class Universe(BaseDomain):
         query_params = {'datasource': datasource}
         path_params = {}
 
-        url = f'{self.BASE_URI}/universe/categories/'
+        url = f'/universe/categories/'
         if path_params:
             url = url.format(**path_params)
 
@@ -206,7 +206,7 @@ class Universe(BaseDomain):
         query_params = {'datasource': datasource, 'language': language}
         path_params = {'category_id': category_id}
 
-        url = f'{self.BASE_URI}/universe/categories/{category_id}/'
+        url = f'/universe/categories/{category_id}/'
         if path_params:
             url = url.format(**path_params)
 
@@ -243,7 +243,7 @@ class Universe(BaseDomain):
         query_params = {'datasource': datasource}
         path_params = {}
 
-        url = f'{self.BASE_URI}/universe/constellations/'
+        url = f'/universe/constellations/'
         if path_params:
             url = url.format(**path_params)
 
@@ -286,7 +286,7 @@ class Universe(BaseDomain):
         query_params = {'datasource': datasource, 'language': language}
         path_params = {'constellation_id': constellation_id}
 
-        url = f'{self.BASE_URI}/universe/constellations/{constellation_id}/'
+        url = f'/universe/constellations/{constellation_id}/'
         if path_params:
             url = url.format(**path_params)
 
@@ -327,7 +327,7 @@ class Universe(BaseDomain):
         query_params = {'datasource': datasource, 'language': language}
         path_params = {}
 
-        url = f'{self.BASE_URI}/universe/factions/'
+        url = f'/universe/factions/'
         if path_params:
             url = url.format(**path_params)
 
@@ -364,7 +364,7 @@ class Universe(BaseDomain):
         query_params = {'datasource': datasource}
         path_params = {}
 
-        url = f'{self.BASE_URI}/universe/graphics/'
+        url = f'/universe/graphics/'
         if path_params:
             url = url.format(**path_params)
 
@@ -405,7 +405,7 @@ class Universe(BaseDomain):
         query_params = {'datasource': datasource}
         path_params = {'graphic_id': graphic_id}
 
-        url = f'{self.BASE_URI}/universe/graphics/{graphic_id}/'
+        url = f'/universe/graphics/{graphic_id}/'
         if path_params:
             url = url.format(**path_params)
 
@@ -444,7 +444,7 @@ class Universe(BaseDomain):
         query_params = {'datasource': datasource, 'page': page}
         path_params = {}
 
-        url = f'{self.BASE_URI}/universe/groups/'
+        url = f'/universe/groups/'
         if path_params:
             url = url.format(**path_params)
 
@@ -489,7 +489,7 @@ class Universe(BaseDomain):
         query_params = {'datasource': datasource, 'language': language}
         path_params = {'group_id': group_id}
 
-        url = f'{self.BASE_URI}/universe/groups/{group_id}/'
+        url = f'/universe/groups/{group_id}/'
         if path_params:
             url = url.format(**path_params)
 
@@ -528,7 +528,7 @@ class Universe(BaseDomain):
         query_params = {'datasource': datasource}
         path_params = {'moon_id': moon_id}
 
-        url = f'{self.BASE_URI}/universe/moons/{moon_id}/'
+        url = f'/universe/moons/{moon_id}/'
         if path_params:
             url = url.format(**path_params)
 
@@ -567,7 +567,7 @@ class Universe(BaseDomain):
         query_params = {'datasource': datasource}
         path_params = {'planet_id': planet_id}
 
-        url = f'{self.BASE_URI}/universe/planets/{planet_id}/'
+        url = f'/universe/planets/{planet_id}/'
         if path_params:
             url = url.format(**path_params)
 
@@ -610,7 +610,7 @@ class Universe(BaseDomain):
         query_params = {'datasource': datasource, 'language': language}
         path_params = {}
 
-        url = f'{self.BASE_URI}/universe/races/'
+        url = f'/universe/races/'
         if path_params:
             url = url.format(**path_params)
 
@@ -647,7 +647,7 @@ class Universe(BaseDomain):
         query_params = {'datasource': datasource}
         path_params = {}
 
-        url = f'{self.BASE_URI}/universe/regions/'
+        url = f'/universe/regions/'
         if path_params:
             url = url.format(**path_params)
 
@@ -690,7 +690,7 @@ class Universe(BaseDomain):
         query_params = {'datasource': datasource, 'language': language}
         path_params = {'region_id': region_id}
 
-        url = f'{self.BASE_URI}/universe/regions/{region_id}/'
+        url = f'/universe/regions/{region_id}/'
         if path_params:
             url = url.format(**path_params)
 
@@ -729,7 +729,7 @@ class Universe(BaseDomain):
         query_params = {'datasource': datasource}
         path_params = {'stargate_id': stargate_id}
 
-        url = f'{self.BASE_URI}/universe/stargates/{stargate_id}/'
+        url = f'/universe/stargates/{stargate_id}/'
         if path_params:
             url = url.format(**path_params)
 
@@ -768,7 +768,7 @@ class Universe(BaseDomain):
         query_params = {'datasource': datasource}
         path_params = {'star_id': star_id}
 
-        url = f'{self.BASE_URI}/universe/stars/{star_id}/'
+        url = f'/universe/stars/{star_id}/'
         if path_params:
             url = url.format(**path_params)
 
@@ -807,7 +807,7 @@ class Universe(BaseDomain):
         query_params = {'datasource': datasource}
         path_params = {'station_id': station_id}
 
-        url = f'{self.BASE_URI}/universe/stations/{station_id}/'
+        url = f'/universe/stations/{station_id}/'
         if path_params:
             url = url.format(**path_params)
 
@@ -848,7 +848,7 @@ class Universe(BaseDomain):
         query_params = {'datasource': datasource, 'filter': filter}
         path_params = {}
 
-        url = f'{self.BASE_URI}/universe/structures/'
+        url = f'/universe/structures/'
         if path_params:
             url = url.format(**path_params)
 
@@ -887,7 +887,7 @@ class Universe(BaseDomain):
         query_params = {'datasource': datasource, 'token': token}
         path_params = {'structure_id': structure_id}
 
-        url = f'{self.BASE_URI}/universe/structures/{structure_id}/'
+        url = f'/universe/structures/{structure_id}/'
         if path_params:
             url = url.format(**path_params)
 
@@ -924,7 +924,7 @@ class Universe(BaseDomain):
         query_params = {'datasource': datasource}
         path_params = {}
 
-        url = f'{self.BASE_URI}/universe/system_jumps/'
+        url = f'/universe/system_jumps/'
         if path_params:
             url = url.format(**path_params)
 
@@ -959,7 +959,7 @@ class Universe(BaseDomain):
         query_params = {'datasource': datasource}
         path_params = {}
 
-        url = f'{self.BASE_URI}/universe/system_kills/'
+        url = f'/universe/system_kills/'
         if path_params:
             url = url.format(**path_params)
 
@@ -998,7 +998,7 @@ class Universe(BaseDomain):
         query_params = {'datasource': datasource}
         path_params = {}
 
-        url = f'{self.BASE_URI}/universe/systems/'
+        url = f'/universe/systems/'
         if path_params:
             url = url.format(**path_params)
 
@@ -1041,7 +1041,7 @@ class Universe(BaseDomain):
         query_params = {'datasource': datasource, 'language': language}
         path_params = {'system_id': system_id}
 
-        url = f'{self.BASE_URI}/universe/systems/{system_id}/'
+        url = f'/universe/systems/{system_id}/'
         if path_params:
             url = url.format(**path_params)
 
@@ -1080,7 +1080,7 @@ class Universe(BaseDomain):
         query_params = {'datasource': datasource, 'page': page}
         path_params = {}
 
-        url = f'{self.BASE_URI}/universe/types/'
+        url = f'/universe/types/'
         if path_params:
             url = url.format(**path_params)
 
@@ -1123,7 +1123,7 @@ class Universe(BaseDomain):
         query_params = {'datasource': datasource, 'language': language}
         path_params = {'type_id': type_id}
 
-        url = f'{self.BASE_URI}/universe/types/{type_id}/'
+        url = f'/universe/types/{type_id}/'
         if path_params:
             url = url.format(**path_params)
 

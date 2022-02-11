@@ -48,7 +48,7 @@ class PlanetaryInteraction(BaseDomain):
         query_params = {'datasource': datasource, 'token': token}
         path_params = {'character_id': character_id}
 
-        url = f'{self.BASE_URI}/characters/{character_id}/planets/'
+        url = f'/characters/{character_id}/planets/'
         if path_params:
             url = url.format(**path_params)
 
@@ -87,7 +87,7 @@ class PlanetaryInteraction(BaseDomain):
         query_params = {'datasource': datasource, 'token': token}
         path_params = {'character_id': character_id, 'planet_id': planet_id}
 
-        url = f'{self.BASE_URI}/characters/{character_id}/planets/{planet_id}/'
+        url = f'/characters/{character_id}/planets/{planet_id}/'
         if path_params:
             url = url.format(**path_params)
 
@@ -136,7 +136,7 @@ class PlanetaryInteraction(BaseDomain):
         query_params = {'datasource': datasource, 'page': page, 'token': token}
         path_params = {'corporation_id': corporation_id}
 
-        url = f'{self.BASE_URI}/corporations/{corporation_id}/customs_offices/'
+        url = f'/corporations/{corporation_id}/customs_offices/'
         if path_params:
             url = url.format(**path_params)
 
@@ -177,7 +177,7 @@ class PlanetaryInteraction(BaseDomain):
         query_params = {'datasource': datasource}
         path_params = {'schematic_id': schematic_id}
 
-        url = f'{self.BASE_URI}/universe/schematics/{schematic_id}/'
+        url = f'/universe/schematics/{schematic_id}/'
         if path_params:
             url = url.format(**path_params)
 

@@ -50,7 +50,7 @@ class Location(BaseDomain):
         query_params = {'datasource': datasource, 'token': token}
         path_params = {'character_id': character_id}
 
-        url = f'{self.BASE_URI}/characters/{character_id}/location/'
+        url = f'/characters/{character_id}/location/'
         if path_params:
             url = url.format(**path_params)
 
@@ -93,7 +93,7 @@ class Location(BaseDomain):
         query_params = {'datasource': datasource, 'token': token}
         path_params = {'character_id': character_id}
 
-        url = f'{self.BASE_URI}/characters/{character_id}/online/'
+        url = f'/characters/{character_id}/online/'
         if path_params:
             url = url.format(**path_params)
 
@@ -138,7 +138,7 @@ class Location(BaseDomain):
         query_params = {'datasource': datasource, 'token': token}
         path_params = {'character_id': character_id}
 
-        url = f'{self.BASE_URI}/characters/{character_id}/ship/'
+        url = f'/characters/{character_id}/ship/'
         if path_params:
             url = url.format(**path_params)
 

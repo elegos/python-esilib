@@ -46,7 +46,7 @@ class Status(BaseDomain):
         query_params = {'datasource': datasource}
         path_params = {}
 
-        url = f'{self.BASE_URI}/status/'
+        url = f'/status/'
         if path_params:
             url = url.format(**path_params)
 

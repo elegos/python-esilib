@@ -48,7 +48,7 @@ class Skills(BaseDomain):
         query_params = {'datasource': datasource, 'token': token}
         path_params = {'character_id': character_id}
 
-        url = f'{self.BASE_URI}/characters/{character_id}/attributes/'
+        url = f'/characters/{character_id}/attributes/'
         if path_params:
             url = url.format(**path_params)
 
@@ -91,7 +91,7 @@ class Skills(BaseDomain):
         query_params = {'datasource': datasource, 'token': token}
         path_params = {'character_id': character_id}
 
-        url = f'{self.BASE_URI}/characters/{character_id}/skillqueue/'
+        url = f'/characters/{character_id}/skillqueue/'
         if path_params:
             url = url.format(**path_params)
 
@@ -132,7 +132,7 @@ class Skills(BaseDomain):
         query_params = {'datasource': datasource, 'token': token}
         path_params = {'character_id': character_id}
 
-        url = f'{self.BASE_URI}/characters/{character_id}/skills/'
+        url = f'/characters/{character_id}/skills/'
         if path_params:
             url = url.format(**path_params)
 

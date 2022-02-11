@@ -52,7 +52,7 @@ class Calendar(BaseDomain):
         query_params = {'datasource': datasource, 'from_event': from_event, 'token': token}
         path_params = {'character_id': character_id}
 
-        url = f'{self.BASE_URI}/characters/{character_id}/calendar/'
+        url = f'/characters/{character_id}/calendar/'
         if path_params:
             url = url.format(**path_params)
 
@@ -99,7 +99,7 @@ class Calendar(BaseDomain):
         query_params = {'datasource': datasource, 'token': token}
         path_params = {'character_id': character_id, 'event_id': event_id}
 
-        url = f'{self.BASE_URI}/characters/{character_id}/calendar/{event_id}/'
+        url = f'/characters/{character_id}/calendar/{event_id}/'
         if path_params:
             url = url.format(**path_params)
 
@@ -146,7 +146,7 @@ class Calendar(BaseDomain):
         query_params = {'datasource': datasource, 'token': token}
         path_params = {'character_id': character_id, 'event_id': event_id}
 
-        url = f'{self.BASE_URI}/characters/{character_id}/calendar/{event_id}/attendees/'
+        url = f'/characters/{character_id}/calendar/{event_id}/attendees/'
         if path_params:
             url = url.format(**path_params)
 

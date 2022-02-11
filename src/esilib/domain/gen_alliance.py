@@ -46,7 +46,7 @@ class Alliance(BaseDomain):
         query_params = {'datasource': datasource}
         path_params = {}
 
-        url = f'{self.BASE_URI}/alliances/'
+        url = f'/alliances/'
         if path_params:
             url = url.format(**path_params)
 
@@ -89,7 +89,7 @@ class Alliance(BaseDomain):
         query_params = {'datasource': datasource}
         path_params = {'alliance_id': alliance_id}
 
-        url = f'{self.BASE_URI}/alliances/{alliance_id}/'
+        url = f'/alliances/{alliance_id}/'
         if path_params:
             url = url.format(**path_params)
 
@@ -132,7 +132,7 @@ class Alliance(BaseDomain):
         query_params = {'datasource': datasource}
         path_params = {'alliance_id': alliance_id}
 
-        url = f'{self.BASE_URI}/alliances/{alliance_id}/corporations/'
+        url = f'/alliances/{alliance_id}/corporations/'
         if path_params:
             url = url.format(**path_params)
 
@@ -174,7 +174,7 @@ class Alliance(BaseDomain):
         query_params = {'datasource': datasource}
         path_params = {'alliance_id': alliance_id}
 
-        url = f'{self.BASE_URI}/alliances/{alliance_id}/icons/'
+        url = f'/alliances/{alliance_id}/icons/'
         if path_params:
             url = url.format(**path_params)
 

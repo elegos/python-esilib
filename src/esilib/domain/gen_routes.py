@@ -55,7 +55,7 @@ class Routes(BaseDomain):
                         'datasource': datasource, 'flag': flag}
         path_params = {'destination': destination, 'origin': origin}
 
-        url = f'{self.BASE_URI}/route/{origin}/{destination}/'
+        url = f'/route/{origin}/{destination}/'
         if path_params:
             url = url.format(**path_params)
 

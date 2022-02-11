@@ -48,7 +48,7 @@ class Loyalty(BaseDomain):
         query_params = {'datasource': datasource, 'token': token}
         path_params = {'character_id': character_id}
 
-        url = f'{self.BASE_URI}/characters/{character_id}/loyalty/points/'
+        url = f'/characters/{character_id}/loyalty/points/'
         if path_params:
             url = url.format(**path_params)
 
@@ -89,7 +89,7 @@ class Loyalty(BaseDomain):
         query_params = {'datasource': datasource}
         path_params = {'corporation_id': corporation_id}
 
-        url = f'{self.BASE_URI}/loyalty/stores/{corporation_id}/offers/'
+        url = f'/loyalty/stores/{corporation_id}/offers/'
         if path_params:
             url = url.format(**path_params)
 

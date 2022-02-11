@@ -48,7 +48,7 @@ class Insurance(BaseDomain):
         query_params = {'datasource': datasource, 'language': language}
         path_params = {}
 
-        url = f'{self.BASE_URI}/insurance/prices/'
+        url = f'/insurance/prices/'
         if path_params:
             url = url.format(**path_params)
 

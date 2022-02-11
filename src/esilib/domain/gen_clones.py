@@ -48,7 +48,7 @@ class Clones(BaseDomain):
         query_params = {'datasource': datasource, 'token': token}
         path_params = {'character_id': character_id}
 
-        url = f'{self.BASE_URI}/characters/{character_id}/clones/'
+        url = f'/characters/{character_id}/clones/'
         if path_params:
             url = url.format(**path_params)
 
@@ -93,7 +93,7 @@ class Clones(BaseDomain):
         query_params = {'datasource': datasource, 'token': token}
         path_params = {'character_id': character_id}
 
-        url = f'{self.BASE_URI}/characters/{character_id}/implants/'
+        url = f'/characters/{character_id}/implants/'
         if path_params:
             url = url.format(**path_params)
 

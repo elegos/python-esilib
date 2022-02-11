@@ -42,7 +42,7 @@ class Corporation(BaseDomain):
         query_params = {'datasource': datasource}
         path_params = {}
 
-        url = f'{self.BASE_URI}/corporations/npccorps/'
+        url = f'/corporations/npccorps/'
         if path_params:
             url = url.format(**path_params)
 
@@ -81,7 +81,7 @@ class Corporation(BaseDomain):
         query_params = {'datasource': datasource}
         path_params = {'corporation_id': corporation_id}
 
-        url = f'{self.BASE_URI}/corporations/{corporation_id}/'
+        url = f'/corporations/{corporation_id}/'
         if path_params:
             url = url.format(**path_params)
 
@@ -120,7 +120,7 @@ class Corporation(BaseDomain):
         query_params = {'datasource': datasource}
         path_params = {'corporation_id': corporation_id}
 
-        url = f'{self.BASE_URI}/corporations/{corporation_id}/alliancehistory/'
+        url = f'/corporations/{corporation_id}/alliancehistory/'
         if path_params:
             url = url.format(**path_params)
 
@@ -167,7 +167,7 @@ class Corporation(BaseDomain):
         query_params = {'datasource': datasource, 'page': page, 'token': token}
         path_params = {'corporation_id': corporation_id}
 
-        url = f'{self.BASE_URI}/corporations/{corporation_id}/blueprints/'
+        url = f'/corporations/{corporation_id}/blueprints/'
         if path_params:
             url = url.format(**path_params)
 
@@ -214,7 +214,7 @@ class Corporation(BaseDomain):
         query_params = {'datasource': datasource, 'page': page, 'token': token}
         path_params = {'corporation_id': corporation_id}
 
-        url = f'{self.BASE_URI}/corporations/{corporation_id}/containers/logs/'
+        url = f'/corporations/{corporation_id}/containers/logs/'
         if path_params:
             url = url.format(**path_params)
 
@@ -259,7 +259,7 @@ class Corporation(BaseDomain):
         query_params = {'datasource': datasource, 'token': token}
         path_params = {'corporation_id': corporation_id}
 
-        url = f'{self.BASE_URI}/corporations/{corporation_id}/divisions/'
+        url = f'/corporations/{corporation_id}/divisions/'
         if path_params:
             url = url.format(**path_params)
 
@@ -304,7 +304,7 @@ class Corporation(BaseDomain):
         query_params = {'datasource': datasource, 'token': token}
         path_params = {'corporation_id': corporation_id}
 
-        url = f'{self.BASE_URI}/corporations/{corporation_id}/facilities/'
+        url = f'/corporations/{corporation_id}/facilities/'
         if path_params:
             url = url.format(**path_params)
 
@@ -343,7 +343,7 @@ class Corporation(BaseDomain):
         query_params = {'datasource': datasource}
         path_params = {'corporation_id': corporation_id}
 
-        url = f'{self.BASE_URI}/corporations/{corporation_id}/icons/'
+        url = f'/corporations/{corporation_id}/icons/'
         if path_params:
             url = url.format(**path_params)
 
@@ -386,7 +386,7 @@ class Corporation(BaseDomain):
         query_params = {'datasource': datasource, 'page': page, 'token': token}
         path_params = {'corporation_id': corporation_id}
 
-        url = f'{self.BASE_URI}/corporations/{corporation_id}/medals/'
+        url = f'/corporations/{corporation_id}/medals/'
         if path_params:
             url = url.format(**path_params)
 
@@ -433,7 +433,7 @@ class Corporation(BaseDomain):
         query_params = {'datasource': datasource, 'page': page, 'token': token}
         path_params = {'corporation_id': corporation_id}
 
-        url = f'{self.BASE_URI}/corporations/{corporation_id}/medals/issued/'
+        url = f'/corporations/{corporation_id}/medals/issued/'
         if path_params:
             url = url.format(**path_params)
 
@@ -474,7 +474,7 @@ class Corporation(BaseDomain):
         query_params = {'datasource': datasource, 'token': token}
         path_params = {'corporation_id': corporation_id}
 
-        url = f'{self.BASE_URI}/corporations/{corporation_id}/members/'
+        url = f'/corporations/{corporation_id}/members/'
         if path_params:
             url = url.format(**path_params)
 
@@ -519,7 +519,7 @@ class Corporation(BaseDomain):
         query_params = {'datasource': datasource, 'token': token}
         path_params = {'corporation_id': corporation_id}
 
-        url = f'{self.BASE_URI}/corporations/{corporation_id}/members/limit/'
+        url = f'/corporations/{corporation_id}/members/limit/'
         if path_params:
             url = url.format(**path_params)
 
@@ -564,7 +564,7 @@ class Corporation(BaseDomain):
         query_params = {'datasource': datasource, 'token': token}
         path_params = {'corporation_id': corporation_id}
 
-        url = f'{self.BASE_URI}/corporations/{corporation_id}/members/titles/'
+        url = f'/corporations/{corporation_id}/members/titles/'
         if path_params:
             url = url.format(**path_params)
 
@@ -609,7 +609,7 @@ class Corporation(BaseDomain):
         query_params = {'datasource': datasource, 'token': token}
         path_params = {'corporation_id': corporation_id}
 
-        url = f'{self.BASE_URI}/corporations/{corporation_id}/membertracking/'
+        url = f'/corporations/{corporation_id}/membertracking/'
         if path_params:
             url = url.format(**path_params)
 
@@ -650,7 +650,7 @@ class Corporation(BaseDomain):
         query_params = {'datasource': datasource, 'token': token}
         path_params = {'corporation_id': corporation_id}
 
-        url = f'{self.BASE_URI}/corporations/{corporation_id}/roles/'
+        url = f'/corporations/{corporation_id}/roles/'
         if path_params:
             url = url.format(**path_params)
 
@@ -697,7 +697,7 @@ class Corporation(BaseDomain):
         query_params = {'datasource': datasource, 'page': page, 'token': token}
         path_params = {'corporation_id': corporation_id}
 
-        url = f'{self.BASE_URI}/corporations/{corporation_id}/roles/history/'
+        url = f'/corporations/{corporation_id}/roles/history/'
         if path_params:
             url = url.format(**path_params)
 
@@ -746,7 +746,7 @@ class Corporation(BaseDomain):
         query_params = {'datasource': datasource, 'page': page, 'token': token}
         path_params = {'corporation_id': corporation_id}
 
-        url = f'{self.BASE_URI}/corporations/{corporation_id}/shareholders/'
+        url = f'/corporations/{corporation_id}/shareholders/'
         if path_params:
             url = url.format(**path_params)
 
@@ -789,7 +789,7 @@ class Corporation(BaseDomain):
         query_params = {'datasource': datasource, 'page': page, 'token': token}
         path_params = {'corporation_id': corporation_id}
 
-        url = f'{self.BASE_URI}/corporations/{corporation_id}/standings/'
+        url = f'/corporations/{corporation_id}/standings/'
         if path_params:
             url = url.format(**path_params)
 
@@ -836,7 +836,7 @@ class Corporation(BaseDomain):
         query_params = {'datasource': datasource, 'page': page, 'token': token}
         path_params = {'corporation_id': corporation_id}
 
-        url = f'{self.BASE_URI}/corporations/{corporation_id}/starbases/'
+        url = f'/corporations/{corporation_id}/starbases/'
         if path_params:
             url = url.format(**path_params)
 
@@ -885,7 +885,7 @@ class Corporation(BaseDomain):
         query_params = {'datasource': datasource, 'system_id': system_id, 'token': token}
         path_params = {'corporation_id': corporation_id, 'starbase_id': starbase_id}
 
-        url = f'{self.BASE_URI}/corporations/{corporation_id}/starbases/{starbase_id}/'
+        url = f'/corporations/{corporation_id}/starbases/{starbase_id}/'
         if path_params:
             url = url.format(**path_params)
 
@@ -937,7 +937,7 @@ class Corporation(BaseDomain):
                         'language': language, 'page': page, 'token': token}
         path_params = {'corporation_id': corporation_id}
 
-        url = f'{self.BASE_URI}/corporations/{corporation_id}/structures/'
+        url = f'/corporations/{corporation_id}/structures/'
         if path_params:
             url = url.format(**path_params)
 
@@ -982,7 +982,7 @@ class Corporation(BaseDomain):
         query_params = {'datasource': datasource, 'token': token}
         path_params = {'corporation_id': corporation_id}
 
-        url = f'{self.BASE_URI}/corporations/{corporation_id}/titles/'
+        url = f'/corporations/{corporation_id}/titles/'
         if path_params:
             url = url.format(**path_params)
 

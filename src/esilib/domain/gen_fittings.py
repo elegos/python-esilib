@@ -46,7 +46,7 @@ class Fittings(BaseDomain):
         query_params = {'datasource': datasource, 'token': token}
         path_params = {'character_id': character_id}
 
-        url = f'{self.BASE_URI}/characters/{character_id}/fittings/'
+        url = f'/characters/{character_id}/fittings/'
         if path_params:
             url = url.format(**path_params)
 

@@ -46,7 +46,7 @@ class Character(BaseDomain):
         query_params = {'datasource': datasource}
         path_params = {'character_id': character_id}
 
-        url = f'{self.BASE_URI}/characters/{character_id}/'
+        url = f'/characters/{character_id}/'
         if path_params:
             url = url.format(**path_params)
 
@@ -87,7 +87,7 @@ class Character(BaseDomain):
         query_params = {'datasource': datasource, 'token': token}
         path_params = {'character_id': character_id}
 
-        url = f'{self.BASE_URI}/characters/{character_id}/agents_research/'
+        url = f'/characters/{character_id}/agents_research/'
         if path_params:
             url = url.format(**path_params)
 
@@ -130,7 +130,7 @@ class Character(BaseDomain):
         query_params = {'datasource': datasource, 'page': page, 'token': token}
         path_params = {'character_id': character_id}
 
-        url = f'{self.BASE_URI}/characters/{character_id}/blueprints/'
+        url = f'/characters/{character_id}/blueprints/'
         if path_params:
             url = url.format(**path_params)
 
@@ -169,7 +169,7 @@ class Character(BaseDomain):
         query_params = {'datasource': datasource}
         path_params = {'character_id': character_id}
 
-        url = f'{self.BASE_URI}/characters/{character_id}/corporationhistory/'
+        url = f'/characters/{character_id}/corporationhistory/'
         if path_params:
             url = url.format(**path_params)
 
@@ -210,7 +210,7 @@ class Character(BaseDomain):
         query_params = {'datasource': datasource, 'token': token}
         path_params = {'character_id': character_id}
 
-        url = f'{self.BASE_URI}/characters/{character_id}/fatigue/'
+        url = f'/characters/{character_id}/fatigue/'
         if path_params:
             url = url.format(**path_params)
 
@@ -251,7 +251,7 @@ class Character(BaseDomain):
         query_params = {'datasource': datasource, 'token': token}
         path_params = {'character_id': character_id}
 
-        url = f'{self.BASE_URI}/characters/{character_id}/medals/'
+        url = f'/characters/{character_id}/medals/'
         if path_params:
             url = url.format(**path_params)
 
@@ -294,7 +294,7 @@ class Character(BaseDomain):
         query_params = {'datasource': datasource, 'token': token}
         path_params = {'character_id': character_id}
 
-        url = f'{self.BASE_URI}/characters/{character_id}/notifications/'
+        url = f'/characters/{character_id}/notifications/'
         if path_params:
             url = url.format(**path_params)
 
@@ -335,7 +335,7 @@ class Character(BaseDomain):
         query_params = {'datasource': datasource, 'token': token}
         path_params = {'character_id': character_id}
 
-        url = f'{self.BASE_URI}/characters/{character_id}/notifications/contacts/'
+        url = f'/characters/{character_id}/notifications/contacts/'
         if path_params:
             url = url.format(**path_params)
 
@@ -376,7 +376,7 @@ class Character(BaseDomain):
         query_params = {'datasource': datasource}
         path_params = {'character_id': character_id}
 
-        url = f'{self.BASE_URI}/characters/{character_id}/portrait/'
+        url = f'/characters/{character_id}/portrait/'
         if path_params:
             url = url.format(**path_params)
 
@@ -417,7 +417,7 @@ class Character(BaseDomain):
         query_params = {'datasource': datasource, 'token': token}
         path_params = {'character_id': character_id}
 
-        url = f'{self.BASE_URI}/characters/{character_id}/roles/'
+        url = f'/characters/{character_id}/roles/'
         if path_params:
             url = url.format(**path_params)
 
@@ -458,7 +458,7 @@ class Character(BaseDomain):
         query_params = {'datasource': datasource, 'token': token}
         path_params = {'character_id': character_id}
 
-        url = f'{self.BASE_URI}/characters/{character_id}/standings/'
+        url = f'/characters/{character_id}/standings/'
         if path_params:
             url = url.format(**path_params)
 
@@ -499,7 +499,7 @@ class Character(BaseDomain):
         query_params = {'datasource': datasource, 'token': token}
         path_params = {'character_id': character_id}
 
-        url = f'{self.BASE_URI}/characters/{character_id}/titles/'
+        url = f'/characters/{character_id}/titles/'
         if path_params:
             url = url.format(**path_params)
 

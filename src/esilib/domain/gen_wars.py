@@ -46,7 +46,7 @@ class Wars(BaseDomain):
         query_params = {'datasource': datasource, 'max_war_id': max_war_id}
         path_params = {}
 
-        url = f'{self.BASE_URI}/wars/'
+        url = f'/wars/'
         if path_params:
             url = url.format(**path_params)
 
@@ -87,7 +87,7 @@ class Wars(BaseDomain):
         query_params = {'datasource': datasource}
         path_params = {'war_id': war_id}
 
-        url = f'{self.BASE_URI}/wars/{war_id}/'
+        url = f'/wars/{war_id}/'
         if path_params:
             url = url.format(**path_params)
 
@@ -130,7 +130,7 @@ class Wars(BaseDomain):
         query_params = {'datasource': datasource, 'page': page}
         path_params = {'war_id': war_id}
 
-        url = f'{self.BASE_URI}/wars/{war_id}/killmails/'
+        url = f'/wars/{war_id}/killmails/'
         if path_params:
             url = url.format(**path_params)
 

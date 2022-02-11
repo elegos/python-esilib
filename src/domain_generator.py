@@ -181,7 +181,7 @@ def generate_get_function(
         query_params = {{{query_params}}}
         path_params = {{{path_params}}}
 
-        url = f'{{self.BASE_URI}}{path}'
+        url = f'{path}'
         if path_params:
             url = url.format(**path_params)
 

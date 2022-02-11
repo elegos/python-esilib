@@ -44,7 +44,7 @@ class Dogma(BaseDomain):
         query_params = {'datasource': datasource}
         path_params = {}
 
-        url = f'{self.BASE_URI}/dogma/attributes/'
+        url = f'/dogma/attributes/'
         if path_params:
             url = url.format(**path_params)
 
@@ -85,7 +85,7 @@ class Dogma(BaseDomain):
         query_params = {'datasource': datasource}
         path_params = {'attribute_id': attribute_id}
 
-        url = f'{self.BASE_URI}/dogma/attributes/{attribute_id}/'
+        url = f'/dogma/attributes/{attribute_id}/'
         if path_params:
             url = url.format(**path_params)
 
@@ -128,7 +128,7 @@ class Dogma(BaseDomain):
         query_params = {'datasource': datasource}
         path_params = {'item_id': item_id, 'type_id': type_id}
 
-        url = f'{self.BASE_URI}/dogma/dynamic/items/{type_id}/{item_id}/'
+        url = f'/dogma/dynamic/items/{type_id}/{item_id}/'
         if path_params:
             url = url.format(**path_params)
 
@@ -167,7 +167,7 @@ class Dogma(BaseDomain):
         query_params = {'datasource': datasource}
         path_params = {}
 
-        url = f'{self.BASE_URI}/dogma/effects/'
+        url = f'/dogma/effects/'
         if path_params:
             url = url.format(**path_params)
 
@@ -206,7 +206,7 @@ class Dogma(BaseDomain):
         query_params = {'datasource': datasource}
         path_params = {'effect_id': effect_id}
 
-        url = f'{self.BASE_URI}/dogma/effects/{effect_id}/'
+        url = f'/dogma/effects/{effect_id}/'
         if path_params:
             url = url.format(**path_params)
 

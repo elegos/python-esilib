@@ -78,7 +78,7 @@ class ESIClient:
         if not hasattr(self, attr):
             setattr(self, attr, cls(self.security))
 
-        return getattr(attr)
+        return getattr(self, attr)
 
     @property
     def alliance(self) -> Alliance:

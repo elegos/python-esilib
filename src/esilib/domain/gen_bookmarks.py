@@ -48,7 +48,7 @@ class Bookmarks(BaseDomain):
         query_params = {'datasource': datasource, 'page': page, 'token': token}
         path_params = {'character_id': character_id}
 
-        url = f'{self.BASE_URI}/characters/{character_id}/bookmarks/'
+        url = f'/characters/{character_id}/bookmarks/'
         if path_params:
             url = url.format(**path_params)
 
@@ -91,7 +91,7 @@ class Bookmarks(BaseDomain):
         query_params = {'datasource': datasource, 'page': page, 'token': token}
         path_params = {'character_id': character_id}
 
-        url = f'{self.BASE_URI}/characters/{character_id}/bookmarks/folders/'
+        url = f'/characters/{character_id}/bookmarks/folders/'
         if path_params:
             url = url.format(**path_params)
 
@@ -136,7 +136,7 @@ class Bookmarks(BaseDomain):
         query_params = {'datasource': datasource, 'page': page, 'token': token}
         path_params = {'corporation_id': corporation_id}
 
-        url = f'{self.BASE_URI}/corporations/{corporation_id}/bookmarks/'
+        url = f'/corporations/{corporation_id}/bookmarks/'
         if path_params:
             url = url.format(**path_params)
 
@@ -181,7 +181,7 @@ class Bookmarks(BaseDomain):
         query_params = {'datasource': datasource, 'page': page, 'token': token}
         path_params = {'corporation_id': corporation_id}
 
-        url = f'{self.BASE_URI}/corporations/{corporation_id}/bookmarks/folders/'
+        url = f'/corporations/{corporation_id}/bookmarks/folders/'
         if path_params:
             url = url.format(**path_params)
 

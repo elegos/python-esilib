@@ -59,7 +59,7 @@ class Search(BaseDomain):
                         'language': language, 'search': search, 'strict': strict, 'token': token}
         path_params = {'character_id': character_id}
 
-        url = f'{self.BASE_URI}/characters/{character_id}/search/'
+        url = f'/characters/{character_id}/search/'
         if path_params:
             url = url.format(**path_params)
 
@@ -109,7 +109,7 @@ class Search(BaseDomain):
                         'language': language, 'search': search, 'strict': strict}
         path_params = {}
 
-        url = f'{self.BASE_URI}/search/'
+        url = f'/search/'
         if path_params:
             url = url.format(**path_params)
 

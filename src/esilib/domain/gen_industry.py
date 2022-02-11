@@ -51,7 +51,7 @@ class Industry(BaseDomain):
                         'include_completed': include_completed, 'token': token}
         path_params = {'character_id': character_id}
 
-        url = f'{self.BASE_URI}/characters/{character_id}/industry/jobs/'
+        url = f'/characters/{character_id}/industry/jobs/'
         if path_params:
             url = url.format(**path_params)
 
@@ -97,7 +97,7 @@ class Industry(BaseDomain):
         query_params = {'datasource': datasource, 'page': page, 'token': token}
         path_params = {'character_id': character_id}
 
-        url = f'{self.BASE_URI}/characters/{character_id}/mining/'
+        url = f'/characters/{character_id}/mining/'
         if path_params:
             url = url.format(**path_params)
 
@@ -147,7 +147,7 @@ class Industry(BaseDomain):
         query_params = {'datasource': datasource, 'page': page, 'token': token}
         path_params = {'corporation_id': corporation_id}
 
-        url = f'{self.BASE_URI}/corporation/{corporation_id}/mining/extractions/'
+        url = f'/corporation/{corporation_id}/mining/extractions/'
         if path_params:
             url = url.format(**path_params)
 
@@ -197,7 +197,7 @@ class Industry(BaseDomain):
         query_params = {'datasource': datasource, 'page': page, 'token': token}
         path_params = {'corporation_id': corporation_id}
 
-        url = f'{self.BASE_URI}/corporation/{corporation_id}/mining/observers/'
+        url = f'/corporation/{corporation_id}/mining/observers/'
         if path_params:
             url = url.format(**path_params)
 
@@ -249,7 +249,7 @@ class Industry(BaseDomain):
         query_params = {'datasource': datasource, 'page': page, 'token': token}
         path_params = {'corporation_id': corporation_id, 'observer_id': observer_id}
 
-        url = f'{self.BASE_URI}/corporation/{corporation_id}/mining/observers/{observer_id}/'
+        url = f'/corporation/{corporation_id}/mining/observers/{observer_id}/'
         if path_params:
             url = url.format(**path_params)
 
@@ -301,7 +301,7 @@ class Industry(BaseDomain):
                         'include_completed': include_completed, 'page': page, 'token': token}
         path_params = {'corporation_id': corporation_id}
 
-        url = f'{self.BASE_URI}/corporations/{corporation_id}/industry/jobs/'
+        url = f'/corporations/{corporation_id}/industry/jobs/'
         if path_params:
             url = url.format(**path_params)
 
@@ -340,7 +340,7 @@ class Industry(BaseDomain):
         query_params = {'datasource': datasource}
         path_params = {}
 
-        url = f'{self.BASE_URI}/industry/facilities/'
+        url = f'/industry/facilities/'
         if path_params:
             url = url.format(**path_params)
 
@@ -379,7 +379,7 @@ class Industry(BaseDomain):
         query_params = {'datasource': datasource}
         path_params = {}
 
-        url = f'{self.BASE_URI}/industry/systems/'
+        url = f'/industry/systems/'
         if path_params:
             url = url.format(**path_params)
 

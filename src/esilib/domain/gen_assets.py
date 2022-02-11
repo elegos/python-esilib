@@ -48,7 +48,7 @@ class Assets(BaseDomain):
         query_params = {'datasource': datasource, 'page': page, 'token': token}
         path_params = {'character_id': character_id}
 
-        url = f'{self.BASE_URI}/characters/{character_id}/assets/'
+        url = f'/characters/{character_id}/assets/'
         if path_params:
             url = url.format(**path_params)
 
@@ -95,7 +95,7 @@ class Assets(BaseDomain):
         query_params = {'datasource': datasource, 'page': page, 'token': token}
         path_params = {'corporation_id': corporation_id}
 
-        url = f'{self.BASE_URI}/corporations/{corporation_id}/assets/'
+        url = f'/corporations/{corporation_id}/assets/'
         if path_params:
             url = url.format(**path_params)
 

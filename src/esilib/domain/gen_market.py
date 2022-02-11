@@ -46,7 +46,7 @@ class Market(BaseDomain):
         query_params = {'datasource': datasource, 'token': token}
         path_params = {'character_id': character_id}
 
-        url = f'{self.BASE_URI}/characters/{character_id}/orders/'
+        url = f'/characters/{character_id}/orders/'
         if path_params:
             url = url.format(**path_params)
 
@@ -91,7 +91,7 @@ class Market(BaseDomain):
         query_params = {'datasource': datasource, 'page': page, 'token': token}
         path_params = {'character_id': character_id}
 
-        url = f'{self.BASE_URI}/characters/{character_id}/orders/history/'
+        url = f'/characters/{character_id}/orders/history/'
         if path_params:
             url = url.format(**path_params)
 
@@ -138,7 +138,7 @@ class Market(BaseDomain):
         query_params = {'datasource': datasource, 'page': page, 'token': token}
         path_params = {'corporation_id': corporation_id}
 
-        url = f'{self.BASE_URI}/corporations/{corporation_id}/orders/'
+        url = f'/corporations/{corporation_id}/orders/'
         if path_params:
             url = url.format(**path_params)
 
@@ -185,7 +185,7 @@ class Market(BaseDomain):
         query_params = {'datasource': datasource, 'page': page, 'token': token}
         path_params = {'corporation_id': corporation_id}
 
-        url = f'{self.BASE_URI}/corporations/{corporation_id}/orders/history/'
+        url = f'/corporations/{corporation_id}/orders/history/'
         if path_params:
             url = url.format(**path_params)
 
@@ -224,7 +224,7 @@ class Market(BaseDomain):
         query_params = {'datasource': datasource}
         path_params = {}
 
-        url = f'{self.BASE_URI}/markets/groups/'
+        url = f'/markets/groups/'
         if path_params:
             url = url.format(**path_params)
 
@@ -269,7 +269,7 @@ class Market(BaseDomain):
         query_params = {'datasource': datasource, 'language': language}
         path_params = {'market_group_id': market_group_id}
 
-        url = f'{self.BASE_URI}/markets/groups/{market_group_id}/'
+        url = f'/markets/groups/{market_group_id}/'
         if path_params:
             url = url.format(**path_params)
 
@@ -308,7 +308,7 @@ class Market(BaseDomain):
         query_params = {'datasource': datasource}
         path_params = {}
 
-        url = f'{self.BASE_URI}/markets/prices/'
+        url = f'/markets/prices/'
         if path_params:
             url = url.format(**path_params)
 
@@ -353,7 +353,7 @@ class Market(BaseDomain):
         query_params = {'datasource': datasource, 'page': page, 'token': token}
         path_params = {'structure_id': structure_id}
 
-        url = f'{self.BASE_URI}/markets/structures/{structure_id}/'
+        url = f'/markets/structures/{structure_id}/'
         if path_params:
             url = url.format(**path_params)
 
@@ -396,7 +396,7 @@ class Market(BaseDomain):
         query_params = {'datasource': datasource, 'type_id': type_id}
         path_params = {'region_id': region_id}
 
-        url = f'{self.BASE_URI}/markets/{region_id}/history/'
+        url = f'/markets/{region_id}/history/'
         if path_params:
             url = url.format(**path_params)
 
@@ -444,7 +444,7 @@ class Market(BaseDomain):
                         'order_type': order_type, 'page': page, 'type_id': type_id}
         path_params = {'region_id': region_id}
 
-        url = f'{self.BASE_URI}/markets/{region_id}/orders/'
+        url = f'/markets/{region_id}/orders/'
         if path_params:
             url = url.format(**path_params)
 
@@ -487,7 +487,7 @@ class Market(BaseDomain):
         query_params = {'datasource': datasource, 'page': page}
         path_params = {'region_id': region_id}
 
-        url = f'{self.BASE_URI}/markets/{region_id}/types/'
+        url = f'/markets/{region_id}/types/'
         if path_params:
             url = url.format(**path_params)
 

@@ -53,7 +53,7 @@ class Mail(BaseDomain):
                         'last_mail_id': last_mail_id, 'token': token}
         path_params = {'character_id': character_id}
 
-        url = f'{self.BASE_URI}/characters/{character_id}/mail/'
+        url = f'/characters/{character_id}/mail/'
         if path_params:
             url = url.format(**path_params)
 
@@ -94,7 +94,7 @@ class Mail(BaseDomain):
         query_params = {'datasource': datasource, 'token': token}
         path_params = {'character_id': character_id}
 
-        url = f'{self.BASE_URI}/characters/{character_id}/mail/labels/'
+        url = f'/characters/{character_id}/mail/labels/'
         if path_params:
             url = url.format(**path_params)
 
@@ -137,7 +137,7 @@ class Mail(BaseDomain):
         query_params = {'datasource': datasource, 'token': token}
         path_params = {'character_id': character_id}
 
-        url = f'{self.BASE_URI}/characters/{character_id}/mail/lists/'
+        url = f'/characters/{character_id}/mail/lists/'
         if path_params:
             url = url.format(**path_params)
 
@@ -182,7 +182,7 @@ class Mail(BaseDomain):
         query_params = {'datasource': datasource, 'token': token}
         path_params = {'character_id': character_id, 'mail_id': mail_id}
 
-        url = f'{self.BASE_URI}/characters/{character_id}/mail/{mail_id}/'
+        url = f'/characters/{character_id}/mail/{mail_id}/'
         if path_params:
             url = url.format(**path_params)
 

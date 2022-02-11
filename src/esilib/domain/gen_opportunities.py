@@ -48,7 +48,7 @@ class Opportunities(BaseDomain):
         query_params = {'datasource': datasource, 'token': token}
         path_params = {'character_id': character_id}
 
-        url = f'{self.BASE_URI}/characters/{character_id}/opportunities/'
+        url = f'/characters/{character_id}/opportunities/'
         if path_params:
             url = url.format(**path_params)
 
@@ -87,7 +87,7 @@ class Opportunities(BaseDomain):
         query_params = {'datasource': datasource}
         path_params = {}
 
-        url = f'{self.BASE_URI}/opportunities/groups/'
+        url = f'/opportunities/groups/'
         if path_params:
             url = url.format(**path_params)
 
@@ -132,7 +132,7 @@ class Opportunities(BaseDomain):
         query_params = {'datasource': datasource, 'language': language}
         path_params = {'group_id': group_id}
 
-        url = f'{self.BASE_URI}/opportunities/groups/{group_id}/'
+        url = f'/opportunities/groups/{group_id}/'
         if path_params:
             url = url.format(**path_params)
 
@@ -171,7 +171,7 @@ class Opportunities(BaseDomain):
         query_params = {'datasource': datasource}
         path_params = {}
 
-        url = f'{self.BASE_URI}/opportunities/tasks/'
+        url = f'/opportunities/tasks/'
         if path_params:
             url = url.format(**path_params)
 
@@ -212,7 +212,7 @@ class Opportunities(BaseDomain):
         query_params = {'datasource': datasource}
         path_params = {'task_id': task_id}
 
-        url = f'{self.BASE_URI}/opportunities/tasks/{task_id}/'
+        url = f'/opportunities/tasks/{task_id}/'
         if path_params:
             url = url.format(**path_params)
 

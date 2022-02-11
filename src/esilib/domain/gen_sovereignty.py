@@ -44,7 +44,7 @@ class Sovereignty(BaseDomain):
         query_params = {'datasource': datasource}
         path_params = {}
 
-        url = f'{self.BASE_URI}/sovereignty/campaigns/'
+        url = f'/sovereignty/campaigns/'
         if path_params:
             url = url.format(**path_params)
 
@@ -83,7 +83,7 @@ class Sovereignty(BaseDomain):
         query_params = {'datasource': datasource}
         path_params = {}
 
-        url = f'{self.BASE_URI}/sovereignty/map/'
+        url = f'/sovereignty/map/'
         if path_params:
             url = url.format(**path_params)
 
@@ -122,7 +122,7 @@ class Sovereignty(BaseDomain):
         query_params = {'datasource': datasource}
         path_params = {}
 
-        url = f'{self.BASE_URI}/sovereignty/structures/'
+        url = f'/sovereignty/structures/'
         if path_params:
             url = url.format(**path_params)
 

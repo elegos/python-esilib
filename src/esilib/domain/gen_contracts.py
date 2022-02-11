@@ -50,7 +50,7 @@ class Contracts(BaseDomain):
         query_params = {'datasource': datasource, 'page': page, 'token': token}
         path_params = {'character_id': character_id}
 
-        url = f'{self.BASE_URI}/characters/{character_id}/contracts/'
+        url = f'/characters/{character_id}/contracts/'
         if path_params:
             url = url.format(**path_params)
 
@@ -95,7 +95,7 @@ class Contracts(BaseDomain):
         query_params = {'datasource': datasource, 'token': token}
         path_params = {'character_id': character_id, 'contract_id': contract_id}
 
-        url = f'{self.BASE_URI}/characters/{character_id}/contracts/{contract_id}/bids/'
+        url = f'/characters/{character_id}/contracts/{contract_id}/bids/'
         if path_params:
             url = url.format(**path_params)
 
@@ -140,7 +140,7 @@ class Contracts(BaseDomain):
         query_params = {'datasource': datasource, 'token': token}
         path_params = {'character_id': character_id, 'contract_id': contract_id}
 
-        url = f'{self.BASE_URI}/characters/{character_id}/contracts/{contract_id}/items/'
+        url = f'/characters/{character_id}/contracts/{contract_id}/items/'
         if path_params:
             url = url.format(**path_params)
 
@@ -183,7 +183,7 @@ class Contracts(BaseDomain):
         query_params = {'datasource': datasource, 'page': page}
         path_params = {'contract_id': contract_id}
 
-        url = f'{self.BASE_URI}/contracts/public/bids/{contract_id}/'
+        url = f'/contracts/public/bids/{contract_id}/'
         if path_params:
             url = url.format(**path_params)
 
@@ -226,7 +226,7 @@ class Contracts(BaseDomain):
         query_params = {'datasource': datasource, 'page': page}
         path_params = {'contract_id': contract_id}
 
-        url = f'{self.BASE_URI}/contracts/public/items/{contract_id}/'
+        url = f'/contracts/public/items/{contract_id}/'
         if path_params:
             url = url.format(**path_params)
 
@@ -269,7 +269,7 @@ class Contracts(BaseDomain):
         query_params = {'datasource': datasource, 'page': page}
         path_params = {'region_id': region_id}
 
-        url = f'{self.BASE_URI}/contracts/public/{region_id}/'
+        url = f'/contracts/public/{region_id}/'
         if path_params:
             url = url.format(**path_params)
 
@@ -314,7 +314,7 @@ class Contracts(BaseDomain):
         query_params = {'datasource': datasource, 'page': page, 'token': token}
         path_params = {'corporation_id': corporation_id}
 
-        url = f'{self.BASE_URI}/corporations/{corporation_id}/contracts/'
+        url = f'/corporations/{corporation_id}/contracts/'
         if path_params:
             url = url.format(**path_params)
 
@@ -361,7 +361,7 @@ class Contracts(BaseDomain):
         query_params = {'datasource': datasource, 'page': page, 'token': token}
         path_params = {'contract_id': contract_id, 'corporation_id': corporation_id}
 
-        url = f'{self.BASE_URI}/corporations/{corporation_id}/contracts/{contract_id}/bids/'
+        url = f'/corporations/{corporation_id}/contracts/{contract_id}/bids/'
         if path_params:
             url = url.format(**path_params)
 
@@ -406,7 +406,7 @@ class Contracts(BaseDomain):
         query_params = {'datasource': datasource, 'token': token}
         path_params = {'contract_id': contract_id, 'corporation_id': corporation_id}
 
-        url = f'{self.BASE_URI}/corporations/{corporation_id}/contracts/{contract_id}/items/'
+        url = f'/corporations/{corporation_id}/contracts/{contract_id}/items/'
         if path_params:
             url = url.format(**path_params)
 
